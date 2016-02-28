@@ -323,7 +323,7 @@ INSERT INTO Player VALUES(24, 290, 'Jeff', 'Withey', 'Utah Jazz');
 
 
 INSERT INTO Player VALUES(24, 291, 'Kent', 'Bazemore', 'Atlanta Hawks');
-INSERT INTO Player VALUES(10, 292, 'Tim', 'Hardaway,', 'Atlanta Hawks');
+INSERT INTO Player VALUES(10, 292, 'Tim', 'Hardaway', 'Atlanta Hawks');
 INSERT INTO Player VALUES(12, 293, 'Kirk', 'Hinrich', 'Atlanta Hawks');
 INSERT INTO Player VALUES(15, 294, 'Al', 'Horford', 'Atlanta Hawks');
 INSERT INTO Player VALUES(26, 295, 'Kyle', 'Korver', 'Atlanta Hawks');
