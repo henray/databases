@@ -104,7 +104,7 @@ CREATE TABLE ProductOrderWarehouse
 	warehouseID int,
 	PRIMARY KEY(productID, orderID, warehouseID),
 	FOREIGN KEY(productID) REFERENCES Product(productID),
-	FOREIGN KEY(orderID) REFERENCES Orders(orderID)
+	FOREIGN KEY(orderID) REFERENCES Orders(orderID),
 	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID)
 );
 
