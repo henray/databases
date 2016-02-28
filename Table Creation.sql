@@ -24,7 +24,7 @@ CREATE TABLE Product
 	PRIMARY KEY (productID)
 );
 
-CREATE TYPE payment_method as ENUM ( 'visa', 'mastercard', 'cash', 'paypal');
+CREATE TYPE payment_method as ENUM ( 'visa', 'mastercard', 'american express', 'paypal');
 
 CREATE TABLE Orders
 (
@@ -66,7 +66,8 @@ CREATE TABLE Player
 (
 	playerNumber int NOT NULL CHECK (playerNumber >= 0),
 	accountNumber int UNIQUE NOT NULL,
-	playerName varchar(50) NOT NULL,
+	firstName varchar(50) NOT NULL,
+	lastname varchar(50) NOT NULL,
 	teamName varchar(50) NOT NULL,
 	PRIMARY KEY(playerNumber, teamName),
 	FOREIGN KEY(teamName) REFERENCES Team(teamName)
@@ -95,14 +96,16 @@ CREATE TABLE CustomerOrder
 	FOREIGN KEY(orderID) REFERENCES Orders(orderID)
 );
 
-CREATE TABLE ProductOrder
+CREATE TABLE ProductOrderWarehouse
 (
 	quantity int NOT NULL CHECK (quantity > 0),
 	productID int,
 	orderID int,
-	PRIMARY KEY(productID, orderID),
+	warehouseID int,
+	PRIMARY KEY(productID, orderID, warehouseID),
 	FOREIGN KEY(productID) REFERENCES Product(productID),
 	FOREIGN KEY(orderID) REFERENCES Orders(orderID)
+	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID)
 );
 
 CREATE TABLE ShipmentSupplier
@@ -113,6 +116,16 @@ CREATE TABLE ShipmentSupplier
 	FOREIGN KEY (shipmentID) REFERENCES Shipment(shipmentID),
 	FOREIGN KEY (supplierName) REFERENCES Supplier(supplierName)
 );
+
+CREATE TABLE ShipmentWarehouse
+(
+	shipmentID int,
+	warehouseID int NOT NULL,
+	PRIMARY KEY(shipmentID),
+	FOREIGN KEY(shipmentID) REFERENCES Shipment(shipmentID),
+	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID)
+);
+
 CREATE TABLE ShipmentProduct
 (
 	quantity int NOT NULL CHECK (quantity > 0),
@@ -150,14 +163,4 @@ CREATE TABLE PlayerMerchandisePlayer
 	PRIMARY KEY (productID),
 	FOREIGN KEY (productID) REFERENCES PlayerMerchandise(productID),
 	FOREIGN KEY (playerNumber, teamName) REFERENCES Player(playerNumber, teamName)
-
-);
-
-CREATE TABLE ShipmentWarehouse
-(
-	shipmentID int,
-	warehouseID int NOT NULL,
-	PRIMARY KEY(shipmentID),
-	FOREIGN KEY(shipmentID) REFERENCES Shipment(shipmentID),
-	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID)
 );
