@@ -1,4 +1,3 @@
-CREATE TYPE payment_method AS ENUM ( 'visa', 'mastercard', 'american express', 'paypal');
 INSERT INTO Orders VALUES(1, 'mastercard', '2013-01-16');
 INSERT INTO Orders VALUES(2, 'mastercard', '2013-01-31');
 INSERT INTO Orders VALUES(3, 'visa', '2013-03-05');
