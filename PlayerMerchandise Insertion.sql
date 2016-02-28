@@ -76,6 +76,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Mo Williams Headband', 119);
 INSERT INTO PlayerMerchandise VALUES(117);
 INSERT INTO PlayerMerchandise VALUES(118);
 INSERT INTO PlayerMerchandise VALUES(119);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Anthony Bennett Jersey', 120);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Anthony Bennett Shoes', 121);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Anthony Bennett Headband', 122);
@@ -166,6 +167,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Delon Wright Headband', 164);
 INSERT INTO PlayerMerchandise VALUES(162);
 INSERT INTO PlayerMerchandise VALUES(163);
 INSERT INTO PlayerMerchandise VALUES(164);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Avery Bradley Jersey', 165);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Avery Bradley Shoes', 166);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Avery Bradley Headband', 167);
@@ -250,6 +252,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Tyler Zeller Headband', 206);
 INSERT INTO PlayerMerchandise VALUES(204);
 INSERT INTO PlayerMerchandise VALUES(205);
 INSERT INTO PlayerMerchandise VALUES(206);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Chris Bosh Jersey', 207);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Chris Bosh Shoes', 208);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Chris Bosh Headband', 209);
@@ -328,6 +331,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Justise Winslow Headband', 245);
 INSERT INTO PlayerMerchandise VALUES(243);
 INSERT INTO PlayerMerchandise VALUES(244);
 INSERT INTO PlayerMerchandise VALUES(245);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Kent Bazemore Jersey', 246);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Kent Bazemore Shoes', 247);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Kent Bazemore Headband', 248);
@@ -502,6 +506,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Joseph Young Headband', 332);
 INSERT INTO PlayerMerchandise VALUES(330);
 INSERT INTO PlayerMerchandise VALUES(331);
 INSERT INTO PlayerMerchandise VALUES(332);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Nicolas Batum Jersey', 333);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Nicolas Batum Shoes', 334);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Nicolas Batum Headband', 335);
@@ -592,6 +597,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Cody Zeller Headband', 377);
 INSERT INTO PlayerMerchandise VALUES(375);
 INSERT INTO PlayerMerchandise VALUES(376);
 INSERT INTO PlayerMerchandise VALUES(377);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Cameron Bairstow Jersey', 378);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Cameron Bairstow Shoes', 379);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Cameron Bairstow Headband', 380);
@@ -682,6 +688,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Tony Snell Headband', 422);
 INSERT INTO PlayerMerchandise VALUES(420);
 INSERT INTO PlayerMerchandise VALUES(421);
 INSERT INTO PlayerMerchandise VALUES(422);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Joel Anthony Jersey', 423);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Joel Anthony Shoes', 424);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Joel Anthony Headband', 425);
@@ -772,6 +779,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Anthony Tolliver Headband', 467);
 INSERT INTO PlayerMerchandise VALUES(465);
 INSERT INTO PlayerMerchandise VALUES(466);
 INSERT INTO PlayerMerchandise VALUES(467);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Alan Anderson Jersey', 468);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Alan Anderson Shoes', 469);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Alan Anderson Headband', 470);
@@ -862,6 +870,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'John Wall Headband', 512);
 INSERT INTO PlayerMerchandise VALUES(510);
 INSERT INTO PlayerMerchandise VALUES(511);
 INSERT INTO PlayerMerchandise VALUES(512);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Dewayne Dedmon Jersey', 513);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Dewayne Dedmon Shoes', 514);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Dewayne Dedmon Headband', 515);
@@ -946,6 +955,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'C.J. Watson Headband', 554);
 INSERT INTO PlayerMerchandise VALUES(552);
 INSERT INTO PlayerMerchandise VALUES(553);
 INSERT INTO PlayerMerchandise VALUES(554);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Arron Afflalo Jersey', 555);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Arron Afflalo Shoes', 556);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Arron Afflalo Headband', 557);
@@ -1036,6 +1046,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Derrick Williams Headband', 599);
 INSERT INTO PlayerMerchandise VALUES(597);
 INSERT INTO PlayerMerchandise VALUES(598);
 INSERT INTO PlayerMerchandise VALUES(599);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Giannis Antetokounmpo Jersey', 600);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Giannis Antetokounmpo Shoes', 601);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Giannis Antetokounmpo Headband', 602);
@@ -1126,6 +1137,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Rashad Vaughn Headband', 644);
 INSERT INTO PlayerMerchandise VALUES(642);
 INSERT INTO PlayerMerchandise VALUES(643);
 INSERT INTO PlayerMerchandise VALUES(644);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Bojan Bogdanovic Jersey', 645);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Bojan Bogdanovic Shoes', 646);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Bojan Bogdanovic Headband', 647);
@@ -1204,6 +1216,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Thaddeus Young Headband', 683);
 INSERT INTO PlayerMerchandise VALUES(681);
 INSERT INTO PlayerMerchandise VALUES(682);
 INSERT INTO PlayerMerchandise VALUES(683);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Elton Brand Jersey', 684);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Elton Brand Shoes', 685);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Elton Brand Headband', 686);
@@ -1288,6 +1301,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Hollis Thompson Headband', 725);
 INSERT INTO PlayerMerchandise VALUES(723);
 INSERT INTO PlayerMerchandise VALUES(724);
 INSERT INTO PlayerMerchandise VALUES(725);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Justin Anderson Jersey', 726);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Justin Anderson Shoes', 727);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Justin Anderson Headband', 728);
@@ -1378,6 +1392,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Deron Williams Headband', 770);
 INSERT INTO PlayerMerchandise VALUES(768);
 INSERT INTO PlayerMerchandise VALUES(769);
 INSERT INTO PlayerMerchandise VALUES(770);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Darrell Arthur Jersey', 771);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Darrell Arthur Shoes', 772);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Darrell Arthur Headband', 773);
@@ -1462,6 +1477,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'JaKarr Sampson Headband', 812);
 INSERT INTO PlayerMerchandise VALUES(810);
 INSERT INTO PlayerMerchandise VALUES(811);
 INSERT INTO PlayerMerchandise VALUES(812);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Leandro Barbosa Jersey', 813);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Leandro Barbosa Shoes', 814);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Leandro Barbosa Headband', 815);
@@ -1552,6 +1568,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Anderson Varejao Headband', 857);
 INSERT INTO PlayerMerchandise VALUES(855);
 INSERT INTO PlayerMerchandise VALUES(856);
 INSERT INTO PlayerMerchandise VALUES(857);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Trevor Ariza Jersey', 858);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Trevor Ariza Shoes', 859);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Trevor Ariza Headband', 860);
@@ -1636,6 +1653,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Jason Terry Headband', 899);
 INSERT INTO PlayerMerchandise VALUES(897);
 INSERT INTO PlayerMerchandise VALUES(898);
 INSERT INTO PlayerMerchandise VALUES(899);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Cole Aldrich Jersey', 900);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Cole Aldrich Shoes', 901);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Cole Aldrich Headband', 902);
@@ -1726,6 +1744,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'C.J. Wilcox Headband', 944);
 INSERT INTO PlayerMerchandise VALUES(942);
 INSERT INTO PlayerMerchandise VALUES(943);
 INSERT INTO PlayerMerchandise VALUES(944);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Brandon Bass Jersey', 945);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Brandon Bass Shoes', 946);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Brandon Bass Headband', 947);
@@ -1816,6 +1835,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Nick Young Headband', 989);
 INSERT INTO PlayerMerchandise VALUES(987);
 INSERT INTO PlayerMerchandise VALUES(988);
 INSERT INTO PlayerMerchandise VALUES(989);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Jordan Adams Jersey', 990);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Jordan Adams Shoes', 991);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Jordan Adams Headband', 992);
@@ -1906,6 +1926,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Brandan Wright Headband', 1034);
 INSERT INTO PlayerMerchandise VALUES(1032);
 INSERT INTO PlayerMerchandise VALUES(1033);
 INSERT INTO PlayerMerchandise VALUES(1034);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Nemanja Bjelica Jersey', 1035);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Nemanja Bjelica Shoes', 1036);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Nemanja Bjelica Headband', 1037);
@@ -1990,6 +2011,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Andrew Wiggins Headband', 1076);
 INSERT INTO PlayerMerchandise VALUES(1074);
 INSERT INTO PlayerMerchandise VALUES(1075);
 INSERT INTO PlayerMerchandise VALUES(1076);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Alexis Ajinca Jersey', 1077);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Alexis Ajinca Shoes', 1078);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Alexis Ajinca Headband', 1079);
@@ -2086,6 +2108,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Steven Adams Headband', 1124);
 INSERT INTO PlayerMerchandise VALUES(1122);
 INSERT INTO PlayerMerchandise VALUES(1123);
 INSERT INTO PlayerMerchandise VALUES(1124);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Nick Collison Jersey', 1125);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Nick Collison Shoes', 1126);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Nick Collison Headband', 1127);
@@ -2170,6 +2193,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Eric Bledsoe Headband', 1166);
 INSERT INTO PlayerMerchandise VALUES(1164);
 INSERT INTO PlayerMerchandise VALUES(1165);
 INSERT INTO PlayerMerchandise VALUES(1166);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Devin Booker Jersey', 1167);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Devin Booker Shoes', 1168);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Devin Booker Headband', 1169);
@@ -2254,6 +2278,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Sonny Weems Headband', 1208);
 INSERT INTO PlayerMerchandise VALUES(1206);
 INSERT INTO PlayerMerchandise VALUES(1207);
 INSERT INTO PlayerMerchandise VALUES(1208);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Cliff Alexander Jersey', 1209);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Cliff Alexander Shoes', 1210);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Cliff Alexander Headband', 1211);
@@ -2344,6 +2369,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Noah Vonleh Headband', 1253);
 INSERT INTO PlayerMerchandise VALUES(1251);
 INSERT INTO PlayerMerchandise VALUES(1252);
 INSERT INTO PlayerMerchandise VALUES(1253);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Quincy Acy Jersey', 1254);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Quincy Acy Shoes', 1255);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Quincy Acy Headband', 1256);
@@ -2434,6 +2460,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Rajon Rondo Headband', 1298);
 INSERT INTO PlayerMerchandise VALUES(1296);
 INSERT INTO PlayerMerchandise VALUES(1297);
 INSERT INTO PlayerMerchandise VALUES(1298);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'LaMarcus Aldridge Jersey', 1299);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'LaMarcus Aldridge Shoes', 1300);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'LaMarcus Aldridge Headband', 1301);
@@ -2524,6 +2551,7 @@ INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'David West Headband', 1343);
 INSERT INTO PlayerMerchandise VALUES(1341);
 INSERT INTO PlayerMerchandise VALUES(1342);
 INSERT INTO PlayerMerchandise VALUES(1343);
+
 INSERT INTO Product VALUES(5.99, 35.99, 0.05, 'Trevor Booker Jersey', 1344);
 INSERT INTO Product VALUES(12.99, 50.99, 0.50, 'Trevor Booker Shoes', 1345);
 INSERT INTO Product VALUES(1.99, 6.99, 0.16, 'Trevor Booker Headband', 1346);
