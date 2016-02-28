@@ -186,7 +186,7 @@ INSERT INTO Player VALUES(14, 166, 'Gary', 'Harris', 'Denver Nuggets');
 INSERT INTO Player VALUES(15, 167, 'Nikola', 'Jokic', 'Denver Nuggets');
 INSERT INTO Player VALUES(77, 168, 'Joffrey', 'Lauvergne', 'Denver Nuggets');
 INSERT INTO Player VALUES(3, 169, 'Mike', 'Miller', 'Denver Nuggets');
-INSERT INTO Player VALUES(0, 170, 'Emmanuel', 'Mudiay', 'Denver Nuggets');
+INSERT INTO Player VALUES(2, 170, 'Emmanuel', 'Mudiay', 'Denver Nuggets');
 INSERT INTO Player VALUES(1, 171, 'Jameer', 'Nelson', 'Denver Nuggets');
 INSERT INTO Player VALUES(23, 172, 'Jusuf', 'Nurkic', 'Denver Nuggets');
 INSERT INTO Player VALUES(9, 173, 'JaKarr', 'Sampson', 'Denver Nuggets');
