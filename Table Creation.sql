@@ -1,6 +1,4 @@
-﻿
-drop schema public cascade;
-create schema public;
+﻿CREATE TYPE payment_method as ENUM ( 'visa', 'mastercard', 'american express', 'paypal');
 
 CREATE TABLE Customer
 (
@@ -23,8 +21,6 @@ CREATE TABLE Product
 	productID int,
 	PRIMARY KEY (productID)
 );
-
-CREATE TYPE payment_method as ENUM ( 'visa', 'mastercard', 'american express', 'paypal');
 
 CREATE TABLE Orders
 (
