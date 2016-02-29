@@ -66,21 +66,21 @@ CREATE TABLE Player
 	lastname varchar(50) NOT NULL,
 	teamName varchar(50) NOT NULL,
 	PRIMARY KEY(playerNumber, teamName),
-	FOREIGN KEY(teamName) REFERENCES Team(teamName)
+	FOREIGN KEY(teamName) REFERENCES Team(teamName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE TeamMerchandise
 (
 	productID int,
 	PRIMARY KEY(productID),
-	FOREIGN KEY (productID) REFERENCES Product(productID)
+	FOREIGN KEY (productID) REFERENCES Product(productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE PlayerMerchandise
 (
 	productID int,
 	PRIMARY KEY (productID),
-	FOREIGN KEY (productID) REFERENCES Product(productID)
+	FOREIGN KEY (productID) REFERENCES Product(productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE CustomerOrder
@@ -88,8 +88,8 @@ CREATE TABLE CustomerOrder
 	customerID int NOT NULL,
  	orderID int,
 	PRIMARY KEY(orderID),
-	FOREIGN KEY(customerID) REFERENCES Customer(customerID),
-	FOREIGN KEY(orderID) REFERENCES Orders(orderID)
+	FOREIGN KEY(customerID) REFERENCES Customer(customerID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(orderID) REFERENCES Orders(orderID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ProductOrderWarehouse
@@ -99,9 +99,9 @@ CREATE TABLE ProductOrderWarehouse
 	orderID int,
 	warehouseID int,
 	PRIMARY KEY(productID, orderID, warehouseID),
-	FOREIGN KEY(productID) REFERENCES Product(productID),
-	FOREIGN KEY(orderID) REFERENCES Orders(orderID),
-	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID)
+	FOREIGN KEY(productID) REFERENCES Product(productID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(orderID) REFERENCES Orders(orderID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ShipmentSupplier
@@ -109,8 +109,8 @@ CREATE TABLE ShipmentSupplier
 	supplierName varchar(50) NOT NULL,
 	shipmentID int,
 	PRIMARY KEY (shipmentID),
-	FOREIGN KEY (shipmentID) REFERENCES Shipment(shipmentID),
-	FOREIGN KEY (supplierName) REFERENCES Supplier(supplierName)
+	FOREIGN KEY (shipmentID) REFERENCES Shipment(shipmentID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (supplierName) REFERENCES Supplier(supplierName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ShipmentWarehouse
@@ -118,8 +118,8 @@ CREATE TABLE ShipmentWarehouse
 	shipmentID int,
 	warehouseID int NOT NULL,
 	PRIMARY KEY(shipmentID),
-	FOREIGN KEY(shipmentID) REFERENCES Shipment(shipmentID),
-	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID)
+	FOREIGN KEY(shipmentID) REFERENCES Shipment(shipmentID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY(warehouseID) REFERENCES Warehouse(warehouseID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE ShipmentProduct
@@ -128,8 +128,8 @@ CREATE TABLE ShipmentProduct
 	shipmentID int,
 	productID int,
 	PRIMARY KEY (shipmentID, productID),
-	FOREIGN KEY (shipmentID) REFERENCES Shipment(shipmentID),
-	FOREIGN KEY (productID) REFERENCES Product(productID)
+	FOREIGN KEY (shipmentID) REFERENCES Shipment(shipmentID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (productID) REFERENCES Product(productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE WarehouseProduct
@@ -138,8 +138,8 @@ CREATE TABLE WarehouseProduct
 	warehouseID int,
 	productID int,
 	PRIMARY KEY(warehouseID, productID),
-	FOREIGN KEY (warehouseID) REFERENCES Warehouse(warehouseID),
-	FOREIGN KEY (productID) REFERENCES Product(productID)
+	FOREIGN KEY (warehouseID) REFERENCES Warehouse(warehouseID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (productID) REFERENCES Product(productID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE TeamMerchandiseTeam
@@ -147,8 +147,8 @@ CREATE TABLE TeamMerchandiseTeam
 	productID int, 
 	teamName varchar(50),
 	PRIMARY KEY (productID), 
-	FOREIGN KEY (productID) REFERENCES TeamMerchandise(productID),
-	FOREIGN KEY (teamName) REFERENCES Team(teamName)
+	FOREIGN KEY (productID) REFERENCES TeamMerchandise(productID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (teamName) REFERENCES Team(teamName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE PlayerMerchandisePlayer
@@ -157,8 +157,8 @@ CREATE TABLE PlayerMerchandisePlayer
 	playerNumber int,
 	teamName varchar(50),
 	PRIMARY KEY (productID),
-	FOREIGN KEY (productID) REFERENCES PlayerMerchandise(productID),
-	FOREIGN KEY (playerNumber, teamName) REFERENCES Player(playerNumber, teamName)
+	FOREIGN KEY (productID) REFERENCES PlayerMerchandise(productID) ON DELETE CASCADE ON UPDATE CASCADE,
+	FOREIGN KEY (playerNumber, teamName) REFERENCES Player(playerNumber, teamName) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO Customer VALUES(0, 'Erick', 'Allison', 'ErickAllison@palock.com', '82 Elizabeth Street Chelmsford, MA 01824');
