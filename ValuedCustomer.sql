@@ -37,4 +37,3 @@ LANGUAGE 'plpgsql';
 
 SELECT updateValuesWithLoop();
 SELECT * FROM ValuedCustomer;
-SELECT * FROM ValuedCustomer;
