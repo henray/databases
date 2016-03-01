@@ -42,10 +42,7 @@ IN
 ) 
 ORDER BY customerID);
 
-/* Fifth query will get customer first and last name that:
-	have an order that includes any stephen curry product which costed >50$
-	and
-	have purchased any product that belong ONLY to the NBA (AKA cutPercentage = null) */
+/* Fifth query will get customer first and last name that have made an order that includes any stephen curry product and the total order costs more than $50 */
 SELECT DISTINCT firstname, lastname 
 FROM productorderwarehouse
 INNER JOIN Orders
