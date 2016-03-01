@@ -42,7 +42,8 @@ IN
 ) 
 ORDER BY customerID);
 
-/* Fifth query will get customer first and last name that have made an order that includes any stephen curry product and the total order costs more than $50 */
+/* Fifth query will get customer first and last name that have made an order that includes any Stephen Curry
+product and the total order costs more than $50 */
 SELECT DISTINCT firstname, lastname 
 FROM productorderwarehouse
 INNER JOIN Orders
