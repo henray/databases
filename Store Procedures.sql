@@ -67,3 +67,38 @@ LANGUAGE 'plpgsql';
 
 SELECT * FROM moveWarehouses(5, 1, 1, 50)
 
+/*Increases or decreases the prices of products that have sold above/below a threshold amount and returns the table of updated products*/
+CREATE OR REPLACE FUNCTION changePrices(threshold integer, increase boolean)
+RETURNS TABLE(id integer, pname character varying, price double precision) AS
+$BODY$
+BEGIN
+	IF increase THEN
+		UPDATE Product SET retailPrice = retailPrice * 1.10
+			WHERE productID IN 				
+				(SELECT Product.productID FROM ProductOrderWarehouse, Product
+				WHERE quantity >= threshold
+				AND Product.productID = ProductOrderWarehouse.productID);
+		RETURN QUERY
+		SELECT productID, productName, retailPrice FROM Product
+		WHERE productID IN 
+			(SELECT Product.productID FROM ProductOrderWarehouse, Product
+			WHERE quantity >= threshold
+			AND Product.productID = ProductOrderWarehouse.productID);
+	ELSE 
+		UPDATE Product SET retailPrice = retailPrice * 0.90
+			WHERE productID IN 				
+				(SELECT Product.productID FROM ProductOrderWarehouse, Product
+				WHERE quantity <= threshold
+				AND Product.productID = ProductOrderWarehouse.productID);
+		RETURN QUERY
+		SELECT productID, productName, retailPrice FROM Product
+		WHERE productID IN 
+			(SELECT Product.productID FROM ProductOrderWarehouse, Product
+			WHERE quantity <= threshold
+			AND Product.productID = ProductOrderWarehouse.productID);
+	END IF;
+END;
+$BODY$
+LANGUAGE 'plpgsql';
+
+SELECT * FROM changePrices(2, false)
