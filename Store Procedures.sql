@@ -1,3 +1,70 @@
+/* Retrieve either the profit made from selling the products associated to the team given or retrieve profits for all teams if 'NBA' is given */
+CREATE OR REPLACE FUNCTION retrieveRevenue(teamName varchar(50)) 
+RETURNS TABLE(
+	team varchar(50),
+	profit double precision
+)
+AS $BODY$
+DECLARE teamvar ALIAS FOR $1;	
+BEGIN
+	IF teamvar = 'NBA' THEN 
+		RETURN QUERY
+		SELECT team.teamName, CASE WHEN sum(quantity * (retailPrice - manufacturerPrice)) IS NULL THEN 0
+		ELSE sum(cast(quantity AS float) * (retailPrice - manufacturerPrice)) END AS profit 
+		FROM Team
+		INNER JOIN teamMerchandiseTeam
+		ON team.teamName = teamMerchandiseTeam.teamName
+		INNER JOIN Product
+		ON teamMerchandiseTeam.productId = Product.productId
+		LEFT OUTER JOIN ProductOrderWarehouse
+		ON Product.productID = ProductOrderWarehouse.productID
+		GROUP BY team.teamName
+		ORDER BY teamName;
+	ELSE
+		RETURN QUERY
+		SELECT teamvar AS teamName, CASE WHEN sum(quantity * (retailPrice - manufacturerPrice)) IS NULL THEN 0
+		ELSE sum(cast(quantity AS float) * (retailPrice - manufacturerPrice)) END AS profit 
+		FROM teamMerchandiseTeam
+		INNER JOIN Product
+		ON teamMerchandiseTeam.productId = Product.productId
+		LEFT OUTER JOIN ProductOrderWarehouse
+		ON Product.productID = ProductOrderWarehouse.productID
+		WHERE teamMerchandiseTeam.teamName = teamvar
+		GROUP BY teamvar;
+	END IF;
+END;
+$BODY$
+LANGUAGE plpgsql;
+
+SELECT * FROM retrieveRevenue('NBA');
+
+
+
+/* Retrieve the number of customers that have purchased a players' products */
+CREATE OR REPLACE FUNCTION playersalecount(playernum integer, playerteam character varying)
+RETURNS integer AS
+$BODY$
+DECLARE
+	customerCount int;
+BEGIN	
+	customerCount := (SELECT sum(quantity) -- orders with player products
+					  FROM ProductOrderWarehouse
+					  INNER JOIN (
+						SELECT productId AS playerId -- product ids associated with player
+						FROM PlayerMerchandisePlayer
+						WHERE playernumber = playerNum AND teamname = playerTeam
+					  ) AS playerProducts
+					  ON ProductOrderWarehouse.productId = playerProducts.playerId);
+	RETURN customerCount;
+END
+$BODY$
+LANGUAGE 'plpgsql';
+
+SELECT * FROM playersalecount(2, 'Atlanta Hawks');
+
+
+
+
 ﻿/*Gets all customers that have ordered a specific product*/
 CREATE OR REPLACE FUNCTION customersFromProduct(productID integer)
 RETURNS TABLE(id integer, firstname character varying, lastname character varying, quantity integer) AS
