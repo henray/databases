@@ -1,4 +1,6 @@
 /* Retrieve either the profit made from selling the products associated to the team given or retrieve profits for all teams if 'NBA' is given */
+/*Takes in as input the teamname*/
+/*Returns a table of the team and the profit that team has generated*/
 CREATE OR REPLACE FUNCTION retrieveRevenue(teamName varchar(50)) 
 RETURNS TABLE(
 	team varchar(50),
@@ -36,11 +38,11 @@ END;
 $BODY$
 LANGUAGE plpgsql;
 
-SELECT * FROM retrieveRevenue('NBA');
-
 
 
 /* Retrieve the number of customers that have purchased a players' products */
+/*Takes in as input the player number and the team*/
+/*Returns an integer indicating the number of customers that have purchased that product*/
 CREATE OR REPLACE FUNCTION playersalecount(playernum integer, playerteam character varying)
 RETURNS integer AS
 $BODY$
@@ -60,12 +62,10 @@ END
 $BODY$
 LANGUAGE 'plpgsql';
 
-SELECT * FROM playersalecount(2, 'Atlanta Hawks');
-
-
-
 
 ﻿/*Gets all customers that have ordered a specific product*/
+/*Takes in as input the product ID*/
+/*Returns the table of customerID, firstname, lastname, and the number of that product the customer bought*/
 CREATE OR REPLACE FUNCTION customersFromProduct(productID integer)
 RETURNS TABLE(id integer, firstname character varying, lastname character varying, quantity integer) AS
 $BODY$
@@ -83,9 +83,9 @@ END;
 $BODY$
 LANGUAGE 'plpgsql';
 
-SELECT * FROM customersFromProduct(1);
-
 /*Places an order*/
+/*Takes in as input the customer id, the product id, the quantity of the order, the payment method, and the warehouse ID*/
+/*Returns true if the order was placed and false if it failed*/
 CREATE OR REPLACE FUNCTION placeAnOrder(cID integer, pID integer, qty integer, pmethod payment_method, wID integer)
 RETURNS BOOLEAN AS $BODY$
 DECLARE
@@ -110,9 +110,9 @@ END;
 $BODY$
 LANGUAGE 'plpgsql';
 
-SELECT * FROM placeAnOrder(1, 1, 50, 'visa', 1)
-
 /*Moves products from one warehouse to a different warehouse*/
+/*Takes in as input two warehouse IDs, the product ID, and the quantity*/
+/*Returns true if the move succeeded and false if it failed*/
 CREATE OR REPLACE FUNCTION moveWarehouses(wID1 integer, wID2 integer, pID integer, qty integer)
 RETURNS BOOLEAN AS $BODY$
 DECLARE
@@ -132,9 +132,9 @@ END;
 $BODY$
 LANGUAGE 'plpgsql';
 
-SELECT * FROM moveWarehouses(5, 1, 1, 50)
-
 /*Increases or decreases the prices of products that have sold above/below a threshold amount and returns the table of updated products*/
+/*Takes in as input the threshold price, and a boolean to indicate increase or decrease prices*/
+/*Returns the table of productid, product_name, and the new price of the products that have been modified*/
 CREATE OR REPLACE FUNCTION changePrices(threshold integer, increase boolean)
 RETURNS TABLE(id integer, pname character varying, price double precision) AS
 $BODY$
