@@ -191,26 +191,3 @@ END
 $BODY$
 LANGUAGE plpgsql
   
-CREATE OR REPLACE FUNCTION playersalecount(playernum integer, playerteam character varying)
-RETURNS integer AS
-$BODY$
-DECLARE
-	customerCount int;
-BEGIN	
-	IF EXISTS(SELECT * FROM Player WHERE teamName = playerteam AND playernumber = playernum) THEN
-		customerCount := (SELECT sum(quantity) -- orders with player products
-						  FROM ProductOrderWarehouse
-						  INNER JOIN (
-							SELECT productId AS playerId -- product ids associated with player
-							FROM PlayerMerchandisePlayer
-							WHERE playernumber = playerNum AND teamname = playerTeam
-						  ) AS playerProducts
-						  ON ProductOrderWarehouse.productId = playerProducts.playerId);
-		RETURN customerCount;
-	ELSE
-		RAISE NOTICE 'Player does not exist!';	
-	END IF;
-END
-$BODY$
-LANGUAGE 'plpgsql';
-
