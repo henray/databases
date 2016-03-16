@@ -169,3 +169,20 @@ $BODY$
 LANGUAGE 'plpgsql';
 
 SELECT * FROM changePrices(2, false)
+
+
+/*Retrieves all players for a team given. Used by playersalecount stored procedure in the GUI*/
+CREATE OR REPLACE FUNCTION queryplayers(IN team character varying)
+  RETURNS TABLE(jersey integer, name text) AS
+$BODY$
+
+BEGIN	
+	RETURN QUERY SELECT playernumber, firstname || ' ' || lastname
+	FROM player
+	WHERE teamname = team
+	ORDER BY playernumber;
+
+END
+$BODY$
+LANGUAGE plpgsql
+  
