@@ -72,16 +72,17 @@ $BODY$
 DECLARE
 	pID ALIAS FOR $1;
 BEGIN
-	IF EXISTS(SELECT * FROM Product WHERE productID = pID) THEN
+	IF EXISTS(SELECT 1 FROM Product WHERE Product.productID = pID) THEN
 		RETURN QUERY 	
-		SELECT Customer.customerID, Customer.firstname, Customer.lastname, ProductOrderWarehouse.quantity FROM Customer, Product, ProductOrderWarehouse, CustomerOrder, Orders
+		SELECT Customer.customerID, Customer.firstname, Customer.lastname, ProductOrderWarehouse.quantity 
+		FROM Customer, Product, ProductOrderWarehouse, CustomerOrder, Orders
 		WHERE Customer.customerID = CustomerOrder.customerID
 		AND Orders.orderID = CustomerOrder.orderID
 		AND Product.productID = ProductOrderWarehouse.productID
 		AND Orders.orderID = ProductOrderWarehouse.orderID
 		AND Product.productID = pID;
 	ELSE
-		RAISE NOTICE "THIS PRODUCT DOES NOT EXIST"
+		RAISE EXCEPTION 'The product ID entered does not exist!';
 	END IF;
 END;
 $BODY$
