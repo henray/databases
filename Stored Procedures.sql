@@ -92,7 +92,7 @@ LANGUAGE 'plpgsql';
 /*Takes in as input the customer id, the product id, the quantity of the order, the payment method, and the warehouse ID*/
 /*Returns true if the order was placed and false if it failed*/
 CREATE OR REPLACE FUNCTION placeAnOrder(cID integer, pID integer, qty integer, pmethod payment_method, wID integer)
-RETURNS BOOLEAN AS $BODY$
+RETURNS integer AS $BODY$
 DECLARE
 	oID integer;
 	oDate date;
@@ -100,7 +100,7 @@ DECLARE
 BEGIN
 	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID);
 	IF wquantity - qty < 0 THEN
-		RETURN FALSE;
+		RAISE EXCEPTION 'There is not enough in the warehouse to place this order!';
 	ELSE
 		oID := (SELECT max(orderID) + 1 FROM Orders);
 		oDate := current_date;
@@ -109,7 +109,7 @@ BEGIN
 		INSERT INTO ProductOrderWarehouse VALUES (qty, pID, oID, wID);
 		UPDATE WarehouseProduct SET quantity = quantity - qty
 			WHERE productID = pID AND warehouseID = wID;
-		RETURN TRUE;
+		RETURN oID;
 	END IF;
 END;
 $BODY$
