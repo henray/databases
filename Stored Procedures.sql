@@ -125,7 +125,7 @@ DECLARE
 BEGIN
 	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID1);
 	IF wquantity - qty < 0 THEN
-		RETURN FALSE;
+		RAISE EXCEPTION 'That warehouse does not have enough of the product in stock!';
 	ELSE
 		UPDATE WarehouseProduct SET quantity = quantity - qty
 			WHERE productID = pID AND warehouseID = wID1;
