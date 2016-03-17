@@ -190,14 +190,43 @@ BEGIN
 END
 $BODY$
 LANGUAGE 'plpgsql';
-  
+
+/*Retrieves all the team names in the Team table*/
 CREATE OR REPLACE FUNCTION queryTeamNames()
   Returns TABLE(teamName character varying) AS
 $BODY$
 
 BEGIN
-	RETURN QUERY SELECT teamName FROM Team
-	ORDER BY teamName ASC;
+	RETURN QUERY SELECT Team.teamName FROM Team
+	ORDER BY Team.teamName ASC;
+END
+$BODY$
+LANGUAGE 'plpgsql';
+
+/*Retrieve all the warehouses in the Warehouse table*/
+CREATE OR REPLACE FUNCTION queryWarehouses()
+  Returns TABLE(warehouseID integer, address character varying) AS
+$BODY$
+
+BEGIN
+	RETURN QUERY SELECT Warehouse.warehouseid, Warehouse.address FROM Warehouse
+	ORDER BY Warehouse.warehouseid ASC;
+END
+$BODY$
+LANGUAGE 'plpgsql';
+
+/*Retrieve all the warehouses except for the inputted ID*/
+CREATE OR REPLACE FUNCTION queryWarehousesExcept(wID integer)
+  Returns TABLE(warehouseID integer, address character varying) AS
+$BODY$
+
+BEGIN
+	RETURN QUERY 
+	(SELECT w1.warehouseid, w1.address FROM Warehouse w1
+	EXCEPT
+	SELECT w2.warehouseID,w2.address FROM Warehouse w2 
+	WHERE w2.warehouseID = wID) AS newWarehouse
+	ORDER BY newWarehouse.warehouseid ASC;
 END
 $BODY$
 LANGUAGE 'plpgsql';
