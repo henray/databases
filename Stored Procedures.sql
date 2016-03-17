@@ -189,5 +189,15 @@ BEGIN
 
 END
 $BODY$
-LANGUAGE plpgsql
+LANGUAGE 'plpgsql';
   
+CREATE OR REPLACE FUNCTION queryTeamNames()
+  Returns TABLE(teamName character varying) AS
+$BODY$
+
+BEGIN
+	RETURN QUERY SELECT teamName FROM Team
+	ORDER BY teamName ASC;
+END
+$BODY$
+LANGUAGE 'plpgsql';
