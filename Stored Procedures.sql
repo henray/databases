@@ -222,11 +222,13 @@ $BODY$
 
 BEGIN
 	RETURN QUERY 
-	(SELECT w1.warehouseid, w1.address FROM Warehouse w1
+	SELECT w1.warehouseid, w1.address 
+	FROM Warehouse w1
 	EXCEPT
-	SELECT w2.warehouseID,w2.address FROM Warehouse w2 
-	WHERE w2.warehouseID = wID) AS newWarehouse
-	ORDER BY newWarehouse.warehouseid ASC;
+	SELECT w2.warehouseID,w2.address 
+	FROM Warehouse w2 
+	WHERE w2.warehouseID = wID
+	ORDER BY warehouseid ASC;
 END
 $BODY$
 LANGUAGE 'plpgsql';
