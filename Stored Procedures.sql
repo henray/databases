@@ -216,7 +216,7 @@ $BODY$
 LANGUAGE 'plpgsql';*/
 
 /*Retrieve all the warehouses except for the inputted ID*/
-CREATE OR REPLACE FUNCTION queryWarehousesExcept(wID integer)
+/*CREATE OR REPLACE FUNCTION queryWarehousesExcept(wID integer)
   Returns TABLE(warehouseID integer, address character varying) AS
 $BODY$
 
@@ -231,7 +231,7 @@ BEGIN
 	ORDER BY warehouseid ASC;
 END
 $BODY$
-LANGUAGE 'plpgsql';
+LANGUAGE 'plpgsql';*/
 
 
 /*Retrieve all productIDs at the inputted warehouseID*/
