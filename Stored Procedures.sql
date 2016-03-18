@@ -98,7 +98,7 @@ DECLARE
 	oDate date;
 	wquantity integer;
 BEGIN
-	IF qty <= 0 THEN
+	IF qty < 0 THEN
 		RAISE EXCEPTION 'The quantity entered is not positive.';
 	END IF;
 	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID);
