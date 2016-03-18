@@ -99,7 +99,7 @@ DECLARE
 	wquantity integer;
 BEGIN
 	IF qty <= 0 THEN
-		RAISE EXCEPTION 'The quantity entered is negative.';
+		RAISE EXCEPTION 'The quantity entered is not positive.';
 	END IF;
 	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID);
 	IF wquantity - qty < 0 THEN
