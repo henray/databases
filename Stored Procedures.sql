@@ -150,6 +150,9 @@ CREATE OR REPLACE FUNCTION changePrices(threshold integer, increase boolean)
 RETURNS TABLE(id integer, pname character varying, price double precision) AS
 $BODY$
 BEGIN
+	IF threshold <= 0 THEN
+		RAISE EXCEPTION 'Threshold needs to be a positive integer.';
+	END IF;
 	IF increase THEN
 		UPDATE Product SET retailPrice = retailPrice * 1.10
 			WHERE productID IN 				
@@ -178,6 +181,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE 'plpgsql';
+
 
 SELECT * FROM changePrices(2, false)
 
