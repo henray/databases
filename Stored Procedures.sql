@@ -177,7 +177,7 @@ SELECT * FROM changePrices(2, false)
 
 
 /*Retrieves all players for a team given. Used by playersalecount stored procedure in the GUI*/
-CREATE OR REPLACE FUNCTION queryplayers(IN team character varying)
+/*CREATE OR REPLACE FUNCTION queryplayers(IN team character varying)
   RETURNS TABLE(jersey integer, name text) AS
 $BODY$
 
@@ -189,10 +189,10 @@ BEGIN
 
 END
 $BODY$
-LANGUAGE 'plpgsql';
+LANGUAGE 'plpgsql';*/
 
 /*Retrieves all the team names in the Team table*/
-CREATE OR REPLACE FUNCTION queryTeamNames()
+/*CREATE OR REPLACE FUNCTION queryTeamNames()
   Returns TABLE(teamName character varying) AS
 $BODY$
 
@@ -201,10 +201,10 @@ BEGIN
 	ORDER BY Team.teamName ASC;
 END
 $BODY$
-LANGUAGE 'plpgsql';
+LANGUAGE 'plpgsql';*/
 
 /*Retrieve all the warehouses in the Warehouse table*/
-CREATE OR REPLACE FUNCTION queryWarehouses()
+/*CREATE OR REPLACE FUNCTION queryWarehouses()
   Returns TABLE(warehouseID integer, address character varying) AS
 $BODY$
 
@@ -213,7 +213,7 @@ BEGIN
 	ORDER BY Warehouse.warehouseid ASC;
 END
 $BODY$
-LANGUAGE 'plpgsql';
+LANGUAGE 'plpgsql';*/
 
 /*Retrieve all the warehouses except for the inputted ID*/
 CREATE OR REPLACE FUNCTION queryWarehousesExcept(wID integer)
