@@ -91,32 +91,42 @@ LANGUAGE 'plpgsql';
 /*Places an order*/
 /*Takes in as input the customer id, the product id, the quantity of the order, the payment method, and the warehouse ID*/
 /*Returns true if the order was placed and false if it failed*/
-CREATE OR REPLACE FUNCTION placeAnOrder(cID integer, pID integer, qty integer, pmethod payment_method, wID integer)
-RETURNS integer AS $BODY$
-DECLARE
-	oID integer;
-	oDate date;
-	wquantity integer;
+CREATE OR REPLACE FUNCTION changePrices(threshold integer, increase boolean)
+RETURNS TABLE(id integer, pname character varying, price double precision) AS
+$BODY$
 BEGIN
-	IF qty <= 0 THEN
-		RAISE EXCEPTION 'The quantity entered is negative.';
+	IF threshold <= 0 THEN
+		RAISE EXCEPTION 'Threshold needs to be a positive integer.';
 	END IF;
-	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID);
-	IF wquantity - qty < 0 THEN
-		RAISE EXCEPTION 'There is not enough in the warehouse to place this order!';
-	ELSE
-		oID := (SELECT max(orderID) + 1 FROM Orders);
-		oDate := current_date;
-		INSERT INTO Orders VALUES (oID, pmethod, oDate);
-		INSERT INTO CustomerOrder VALUES (cID, oID);
-		INSERT INTO ProductOrderWarehouse VALUES (qty, pID, oID, wID);
-		UPDATE WarehouseProduct SET quantity = quantity - qty
-			WHERE productID = pID AND warehouseID = wID;
-		RETURN oID;
+	IF increase THEN
+		UPDATE Product SET retailPrice = retailPrice * 1.10
+			WHERE productID IN 				
+				(SELECT Product.productID FROM ProductOrderWarehouse, Product
+				WHERE quantity >= threshold
+				AND Product.productID = ProductOrderWarehouse.productID);
+		RETURN QUERY
+		SELECT productID, productName, retailPrice FROM Product
+		WHERE productID IN 
+			(SELECT Product.productID FROM ProductOrderWarehouse, Product
+			WHERE quantity >= threshold
+			AND Product.productID = ProductOrderWarehouse.productID);
+	ELSE 
+		UPDATE Product SET retailPrice = retailPrice * 0.90
+			WHERE productID IN 				
+				(SELECT Product.productID FROM ProductOrderWarehouse, Product
+				WHERE quantity <= threshold
+				AND Product.productID = ProductOrderWarehouse.productID);
+		RETURN QUERY
+		SELECT productID, productName, retailPrice FROM Product
+		WHERE productID IN 
+			(SELECT Product.productID FROM ProductOrderWarehouse, Product
+			WHERE quantity <= threshold
+			AND Product.productID = ProductOrderWarehouse.productID);
 	END IF;
 END;
 $BODY$
 LANGUAGE 'plpgsql';
+
 
 /*Moves products from one warehouse to a different warehouse*/
 /*Takes in as input two warehouse IDs, the product ID, and the quantity*/
