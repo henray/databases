@@ -235,7 +235,7 @@ LANGUAGE 'plpgsql';*/
 
 
 /*Retrieve all productIDs at the inputted warehouseID*/
-CREATE OR REPLACE FUNCTION queryProductsAtWarehouse(wID integer)
+/*CREATE OR REPLACE FUNCTION queryProductsAtWarehouse(wID integer)
   Returns TABLE(prodID integer) AS
 $BODY$
 
@@ -246,10 +246,10 @@ BEGIN
 	ORDER BY productID ASC;
 END
 $BODY$
-LANGUAGE 'plpgsql';
+LANGUAGE 'plpgsql';*/
 
 /*Retrieve the quantity of the inputted productID*/
-CREATE OR REPLACE FUNCTION queryProductQuantity(pID integer, wID integer)
+/*CREATE OR REPLACE FUNCTION queryProductQuantity(pID integer, wID integer)
   Returns TABLE(quant integer) AS
 $BODY$
 
@@ -259,4 +259,4 @@ BEGIN
 	WHERE productID = pID AND warehouseID = wID;
 END
 $BODY$
-LANGUAGE 'plpgsql';
+LANGUAGE 'plpgsql';*/
