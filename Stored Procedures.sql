@@ -98,6 +98,9 @@ DECLARE
 	oDate date;
 	wquantity integer;
 BEGIN
+	IF qty <= 0 THEN
+		RAISE EXCEPTION 'The quantity entered is negative.';
+	END IF;
 	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID);
 	IF wquantity - qty < 0 THEN
 		RAISE EXCEPTION 'There is not enough in the warehouse to place this order!';
