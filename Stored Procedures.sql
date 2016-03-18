@@ -123,6 +123,9 @@ RETURNS BOOLEAN AS $BODY$
 DECLARE
 	wquantity integer;
 BEGIN
+	IF qty <= 0 THEN
+		RAISE EXCEPTION 'The quantity entered is negative.';
+	END IF;
 	wquantity := (SELECT quantity FROM WarehouseProduct WHERE productID = pID AND warehouseID = wID1);
 	IF wquantity - qty < 0 THEN
 		RAISE EXCEPTION 'That warehouse does not have enough of the product in stock!';
