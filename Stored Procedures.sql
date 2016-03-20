@@ -140,18 +140,21 @@ END;
 $BODY$
 LANGUAGE 'plpgsql';
 
-/*Increases or decreases the prices of products that have sold above/below a threshold amount and returns the table of updated products*/
-/*Takes in as input the threshold price, and a boolean to indicate increase or decrease prices*/
-/*Returns the table of productid, product_name, and the new price of the products that have been modified*/
-CREATE OR REPLACE FUNCTION changePrices(threshold integer, increase boolean)
+
+-- multiplies the price of a product by modifier based on a sales threshold.
+-- if above is true, only the products that have sold threshold or above items
+-- in one order will be modified. If above is false, only the products that
+-- have sold threshold or below in one order will be modified. 
+
+CREATE OR REPLACE FUNCTION changePrices(threshold integer, above boolean, modifier int)
 RETURNS TABLE(id integer, pname character varying, price double precision) AS
 $BODY$
 BEGIN
 	IF threshold <= 0 THEN
 		RAISE EXCEPTION 'Threshold needs to be a positive integer.';
 	END IF;
-	IF increase THEN
-		UPDATE Product SET retailPrice = retailPrice * 1.10
+	IF above THEN
+		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
 				(SELECT Product.productID FROM ProductOrderWarehouse, Product
 				WHERE quantity >= threshold
@@ -163,7 +166,7 @@ BEGIN
 			WHERE quantity >= threshold
 			AND Product.productID = ProductOrderWarehouse.productID);
 	ELSE 
-		UPDATE Product SET retailPrice = retailPrice * 0.90
+		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
 				(SELECT Product.productID FROM ProductOrderWarehouse, Product
 				WHERE quantity <= threshold
@@ -178,6 +181,7 @@ BEGIN
 END;
 $BODY$
 LANGUAGE 'plpgsql';
+
 
 
 /*Retrieves all players for a team given. Used by playersalecount stored procedure in the GUI*/
