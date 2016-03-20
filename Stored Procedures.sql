@@ -141,60 +141,63 @@ $BODY$
 LANGUAGE 'plpgsql';
 
 
--- multiplies the price of a product by modifier based on a sales threshold.
--- if above is true, only the products that have sold threshold or above items
--- in one order will be modified. If above is false, only the products that
--- have sold threshold or below in one order will be modified.
-
--- there is no more increase/decrease; newPrice = modifier x oldPrice. If you
--- want a higher price, multiply by a number higher than 1
--- e.g. modifier = 1.1 is a 10% increase in price
--- 	modifier = 0.9 is a 10% decreease in price
+-- This is a multi-purpose procedure that given a threshold, we can increase or decrease the prices by an input modifier.
+-- The decision the change the prices above or below the threshold is given by the input boolean above.
+-- The modifier is a multiplier on the existing price.
+-- If above is true, only the products that have sold quantity above the threshold are modified.
+-- Likewise, if above is false, only the products that have sold quantity below the threshold are modified.
+-- The items are modified by changing their retail price given by newPrice = oldPrice * modifier
+-- e.g. changePrice(5, true, 1.1) = multiply the prices of all items that have been sold over 5 times by 1.1
+--		changePrices(5, false, 0.9) = multiply the prices of all items that have been sold under 5 times by 0.9
 
 CREATE OR REPLACE FUNCTION changePrices(threshold integer, above boolean, modifier double precision)
-RETURNS TABLE(id integer, pname character varying, price double precision) AS
+RETURNS TABLE(id integer, pname character varying, price double precision, qty bigint) AS
 $BODY$
 BEGIN
 	IF threshold <= 0 THEN
 		RAISE EXCEPTION 'Threshold needs to be a positive integer.';
 	END IF;
-	
+
 	IF modifier < .8  THEN
-		RAISE EXCEPTION 'Modifier too low. Price cannot be lowered by more than 20% at once.';
+		RAISE EXCEPTION 'Modifier too low. Price cannot be lowered by more than 20 percent at once.';
 	END IF;
-	
+
 	IF modifier > 1.2 THEN
-		RAISE EXCEPTION 'Modifier too high. Price cannot be raised by more than 20% at once.';
+		RAISE EXCEPTION 'Modifier too high. Price cannot be raised by more than 20 percent at once.';
 	END IF;
 	
 	IF above THEN
 		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
 				(SELECT Product.productID FROM ProductOrderWarehouse, Product
-				WHERE quantity > threshold
-				AND Product.productID = ProductOrderWarehouse.productID);
+				WHERE Product.productID = ProductOrderWarehouse.productID
+				GROUP BY Product.productID
+				HAVING sum(quantity) > threshold);
 		RETURN QUERY
-		SELECT productID, productName, retailPrice FROM Product
-		WHERE productID IN 
-			(SELECT Product.productID FROM ProductOrderWarehouse, Product
-			WHERE quantity > threshold
-			AND Product.productID = ProductOrderWarehouse.productID);
+		SELECT Product.productID, productName, retailPrice, sum(quantity) FROM Product, ProductOrderWarehouse
+		WHERE Product.productID = ProductOrderWarehouse.productID
+		GROUP BY Product.productID
+		HAVING sum(quantity) > threshold
+		ORDER BY sum(quantity), retailPrice;
 	ELSE 
 		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
 				(SELECT Product.productID FROM ProductOrderWarehouse, Product
-				WHERE quantity < threshold
-				AND Product.productID = ProductOrderWarehouse.productID);
+				WHERE Product.productID = ProductOrderWarehouse.productID
+				GROUP BY Product.productID
+				HAVING sum(quantity) < threshold);
 		RETURN QUERY
-		SELECT productID, productName, retailPrice FROM Product
-		WHERE productID IN 
-			(SELECT Product.productID FROM ProductOrderWarehouse, Product
-			WHERE quantity < threshold
-			AND Product.productID = ProductOrderWarehouse.productID);
+		SELECT Product.productID, productName, retailPrice, sum(quantity) FROM Product, ProductOrderWarehouse
+		WHERE Product.productID = ProductOrderWarehouse.productID
+		GROUP BY Product.productID
+		HAVING sum(quantity) < threshold
+		ORDER BY sum(quantity), retailPrice;
 	END IF;
 END;
 $BODY$
 LANGUAGE 'plpgsql';
+
+SELECT * FROM changePrices(5, true, .8)
 
 
 
