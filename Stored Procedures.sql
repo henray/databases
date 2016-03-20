@@ -171,25 +171,25 @@ BEGIN
 		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
 				(SELECT Product.productID FROM ProductOrderWarehouse, Product
-				WHERE quantity >= threshold
+				WHERE quantity > threshold
 				AND Product.productID = ProductOrderWarehouse.productID);
 		RETURN QUERY
 		SELECT productID, productName, retailPrice FROM Product
 		WHERE productID IN 
 			(SELECT Product.productID FROM ProductOrderWarehouse, Product
-			WHERE quantity >= threshold
+			WHERE quantity > threshold
 			AND Product.productID = ProductOrderWarehouse.productID);
 	ELSE 
 		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
 				(SELECT Product.productID FROM ProductOrderWarehouse, Product
-				WHERE quantity <= threshold
+				WHERE quantity < threshold
 				AND Product.productID = ProductOrderWarehouse.productID);
 		RETURN QUERY
 		SELECT productID, productName, retailPrice FROM Product
 		WHERE productID IN 
 			(SELECT Product.productID FROM ProductOrderWarehouse, Product
-			WHERE quantity <= threshold
+			WHERE quantity < threshold
 			AND Product.productID = ProductOrderWarehouse.productID);
 	END IF;
 END;
