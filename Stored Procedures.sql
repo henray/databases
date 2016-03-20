@@ -118,6 +118,7 @@ LANGUAGE 'plpgsql';
 /*Moves products from one warehouse to a different warehouse*/
 /*Takes in as input two warehouse IDs, the product ID, and the quantity*/
 /*Returns true if the move succeeded and false if it failed*/
+/*Our warehouses must contain at least 1 unit of each product due to the CHECK constraints for our schemas */
 CREATE OR REPLACE FUNCTION moveWarehouses(wID1 integer, wID2 integer, pID integer, qty integer)
 RETURNS BOOLEAN AS 
 $BODY$
@@ -131,7 +132,7 @@ BEGIN
 	IF wquantity - qty < 0 THEN
 		RAISE EXCEPTION 'The warehouse does not have enough of the product in stock!';
 	END IF;
-	IF wquantity - qty = 0 THEN
+	IF wquantity - qty = 0 THEN -- CHECK Constraint Exception
 		RAISE EXCEPTION 'The warehouse must have at least one unit of the product remaining!';
 	ELSE
 		UPDATE WarehouseProduct SET quantity = quantity - qty
