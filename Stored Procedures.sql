@@ -158,6 +158,15 @@ BEGIN
 	IF threshold <= 0 THEN
 		RAISE EXCEPTION 'Threshold needs to be a positive integer.';
 	END IF;
+	
+	IF modifier < .8  THEN
+		RAISE EXCEPTION 'Modifier too low. Price cannot be lowered by more than 20% at once.';
+	END IF;
+	
+	IF modifier > 1.2 THEN
+		RAISE EXCEPTION 'Modifier too high. Price cannot be raised by more than 20% at once.';
+	END IF;
+	
 	IF above THEN
 		UPDATE Product SET retailPrice = retailPrice * modifier
 			WHERE productID IN 				
