@@ -146,10 +146,12 @@ LANGUAGE 'plpgsql';
 -- in one order will be modified. If above is false, only the products that
 -- have sold threshold or below in one order will be modified.
 
--- there is no more increase/decrease, newPrice = modifier x oldPrice. If you
--- want a higher price
+-- there is no more increase/decrease; newPrice = modifier x oldPrice. If you
+-- want a higher price, multiply by a number higher than 1
+-- e.g. modifier = 1.1 is a 10% increase in price
+-- 	modifier = 0.9 is a 10% decreease in price
 
-CREATE OR REPLACE FUNCTION changePrices(threshold integer, above boolean, modifier decimal)
+CREATE OR REPLACE FUNCTION changePrices(threshold integer, above boolean, modifier double precision)
 RETURNS TABLE(id integer, pname character varying, price double precision) AS
 $BODY$
 BEGIN
